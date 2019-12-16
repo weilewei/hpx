@@ -39,6 +39,7 @@ set(HPX_LIBS
   local_lcos
   logging
   memory
+  mpi
   plugin
   preprocessor
   program_options
