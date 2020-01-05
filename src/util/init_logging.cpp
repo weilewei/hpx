@@ -60,12 +60,11 @@ namespace hpx { namespace util {
 
             if (std::size_t(-1) != thread_num)
             {
-                std::string out = format("{:016x}", thread_num);
-                msg.prepend_string(out);
+                msg.format("{:016x}", thread_num);
             }
             else
             {
-                msg.prepend_string(std::string(16, '-'));
+                msg << std::string(16, '-');
             }
         }
     };
@@ -82,13 +81,12 @@ namespace hpx { namespace util {
 
             if (naming::invalid_locality_id != locality_id)
             {
-                std::string out = format("{:08x}", locality_id);
-                msg.prepend_string(out);
+                msg.format("{:08x}", locality_id);
             }
             else
             {
                 // called from outside a HPX thread
-                msg.prepend_string(std::string(8, '-'));
+                msg << std::string(8, '-');
             }
         }
     };
@@ -108,14 +106,13 @@ namespace hpx { namespace util {
                 {
                     std::ptrdiff_t value =
                         reinterpret_cast<std::ptrdiff_t>(id.get());
-                    std::string out = format("{:016x}", value);
-                    msg.prepend_string(out);
+                    msg.format("{:016x}", value);
                     return;
                 }
             }
 
             // called from outside a HPX thread or invalid thread id
-            msg.prepend_string(std::string(16, '-'));
+            msg << std::string(16, '-');
         }
     };
 
@@ -132,15 +129,13 @@ namespace hpx { namespace util {
                 std::size_t phase = self->get_thread_phase();
                 if (0 != phase)
                 {
-                    std::string out =
-                        format("{:04x}", self->get_thread_phase());
-                    msg.prepend_string(out);
+                    msg.format("{:04x}", self->get_thread_phase());
                     return;
                 }
             }
 
             // called from outside a HPX thread or no phase given
-            msg.prepend_string(std::string(4, '-'));
+            msg << std::string(4, '-');
         }
     };
 
@@ -155,13 +150,12 @@ namespace hpx { namespace util {
             if (naming::invalid_locality_id != parent_locality_id)
             {
                 // called from inside a HPX thread
-                std::string out = format("{:08x}", parent_locality_id);
-                msg.prepend_string(out);
+                msg.format("{:08x}", parent_locality_id);
             }
             else
             {
                 // called from outside a HPX thread
-                msg.prepend_string(std::string(8, '-'));
+                msg << std::string(8, '-');
             }
         }
     };
@@ -178,13 +172,12 @@ namespace hpx { namespace util {
                 // called from inside a HPX thread
                 std::ptrdiff_t value =
                     reinterpret_cast<std::ptrdiff_t>(parent_id.get());
-                std::string out = format("{:016x}", value);
-                msg.prepend_string(out);
+                msg.format("{:016x}", value);
             }
             else
             {
                 // called from outside a HPX thread
-                msg.prepend_string(std::string(16, '-'));
+                msg << std::string(16, '-');
             }
         }
     };
@@ -199,13 +192,12 @@ namespace hpx { namespace util {
             if (0 != parent_phase)
             {
                 // called from inside a HPX thread
-                std::string out = format("{:04x}", parent_phase);
-                msg.prepend_string(out);
+                msg.format("{:04x}", parent_phase);
             }
             else
             {
                 // called from outside a HPX thread
-                msg.prepend_string(std::string(4, '-'));
+                msg << std::string(4, '-');
             }
         }
     };
@@ -220,13 +212,12 @@ namespace hpx { namespace util {
             if (0 != component_id)
             {
                 // called from inside a HPX thread
-                std::string out = format("{:016x}", component_id);
-                msg.prepend_string(out);
+                msg.format("{:016x}", component_id);
             }
             else
             {
                 // called from outside a HPX thread
-                msg.prepend_string(std::string(16, '-'));
+                msg << std::string(16, '-');
             }
         }
     };
